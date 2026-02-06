@@ -1,0 +1,39 @@
+name: TW MM Tournament Sync Robot
+
+on:
+  schedule:
+    - cron: '0 */6 * * *'  # ၆ နာရီခြား တစ်ခါ အမှတ်များကို အလိုအလျောက် Sync လုပ်မည်
+  workflow_dispatch:      # လိုအပ်လျှင် Manual နှိပ်ပြီး Sync လုပ်နိုင်သည်
+
+jobs:
+  fpl_sync_job:
+    runs-on: ubuntu-latest
+
+    steps:
+      # ၁။ Repository ထဲက Code များကို ယူခြင်း
+      - name: Checkout Repository Code
+        uses: actions/checkout@v3
+
+      # ၂။ Python Environment ပြင်ဆင်ခြင်း
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      # ၃။ လိုအပ်သော Library များ Install လုပ်ခြင်း
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests firebase-admin
+
+      # ၄။ FPL Points & Tournament Ranking ကို Sync လုပ်ခြင်း
+      - name: Run FPL Rankings Sync
+        env:
+          FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+        run: python scripts/sync_fpl.py
+
+      # ၅။ Scout အချက်အလက်များကို Sync လုပ်ခြင်း
+      - name: Run Scout Firebase Sync
+        env:
+          FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+        run: python scripts/sync_scouts.py
