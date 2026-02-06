@@ -1,0 +1,38 @@
+name: 🏆 Generate Next FA Round
+
+on:
+  workflow_dispatch:
+    inputs:
+      past_gw:
+        description: 'ပြီးသွားသော Gameweek (Past GW)'
+        required: true
+        default: '23'
+      next_gw:
+        description: 'ထုတ်မည့် Gameweek (Next GW)'
+        required: true
+        default: '24'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📂 Checkout Code
+        uses: actions/checkout@v3
+
+      - name: 🐍 Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: 📦 Install Dependencies
+        run: |
+          pip install firebase-admin requests
+
+      - name: 🚀 Run Fixture Manager
+        env:
+          FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+          # Input ကနေ GW နံပါတ်တွေကို Python ဆီ ပို့ပေးခြင်း
+          PAST_GW: ${{ github.event.inputs.past_gw }}
+          NEXT_GW: ${{ github.event.inputs.next_gw }}
+        run: python scripts/fixture_manager.py
