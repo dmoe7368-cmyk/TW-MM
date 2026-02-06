@@ -1,0 +1,24 @@
+{
+  "short_name": "TW MM",
+  "name": "TW MM Tournament Hub",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": "index.html",
+  "background_color": "#000000",
+  "display": "standalone",
+  "scope": "./",
+  "theme_color": "#D4AF37",
+  "description": "TW MM Fantasy Football Tournament Standings and Scout Hub"
+}

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>TW MM Tournament - Gold Edition</title>
+    
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#D4AF37">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    
+    <link rel="apple-touch-icon" href="icon-192.png">
+
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body class="dark-theme">
+
+    <div id="toast-container" class="toast-container"></div>
+
+    <header class="app-header">
+        <div class="logo">TW MM <span>TOURNAMENT</span></div>
+        <div id="auth-root" class="auth-container">
+            </div>
+    </header>
+
+    <main id="main-root">
+        <div class="loading">
+            <div class="spinner"></div>
+            <p>🏆 TW HUB စတင်နေသည်...</p>
+        </div>
+    </main>
+
+    <nav class="bottom-nav">
+        <button id="btn-community" class="nav-item" onclick="showTab('community')">
+            <span class="nav-icon">🏠</span>
+            <span class="nav-label">Home</span>
+        </button>
+        <button id="btn-leagues" class="nav-item" onclick="showTab('leagues')">
+            <span class="nav-icon">🏆</span>
+            <span class="nav-label">Standings</span>
+        </button>
+        <button id="btn-scout" class="nav-item" onclick="showTab('scout')">
+            <span class="nav-icon">🔭</span>
+            <span class="nav-label">Scouts</span>
+        </button>
+        <button id="btn-live" class="nav-item" onclick="showTab('live')">
+            <span class="nav-icon">⚡</span>
+            <span class="nav-label">Live Hub</span>
+        </button>
+    </nav>
+
+    <div id="profile-modal" class="modal-overlay" style="display:none;" onclick="closeProfile()">
+        <div class="modal-content profile-card" onclick="event.stopPropagation()">
+            <div class="profile-header">
+                <div class="profile-avatar">⚽</div>
+                <h2 id="prof-manager">Manager Name</h2>
+                <p id="prof-team" class="gold-text">Team Name</p>
+            </div>
+            <div class="profile-info">
+                <div class="info-item">
+                    <span class="label">FB/Contact:</span>
+                    <span id="prof-fb">-</span>
+                </div>
+            </div>
+            <button class="logout-btn" id="logout-section" onclick="handleLogout()">LOGOUT</button>
+            <button class="close-btn" onclick="closeProfile()">CLOSE</button>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/9.1.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.1.1/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.1.1/firebase-auth-compat.js"></script>
+
+    <script src="js/config.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/community.js"></script>
+    <script src="js/tournament.js"></script>
+    <script src="js/scout.js"></script> 
+    <script src="js/live-hub.js"></script>
+    <script src="js/app.js"></script>
+
+</body>
+    
+</html>
