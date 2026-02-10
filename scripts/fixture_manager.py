@@ -16,7 +16,7 @@ def initialize_firebase():
 
 db = initialize_firebase()
 FPL_API = "https://fantasy.premierleague.com/api/"
-TARGET_GW = 25  # လက်ရှိ Update လုပ်မည့် Week ကို ဤနေရာတွင် ပြောင်းပါ
+TARGET_GW = 26  # လက်ရှိ Update လုပ်မည့် Week ကို ဤနေရာတွင် ပြောင်းပါ
 
 def get_gw_detailed_stats(entry_id, gw_num):
     """ FPL API မှ Points, Hits နှင့် Chips ဒေတာများကို ရယူခြင်း """
