@@ -17,7 +17,7 @@ db = initialize_firebase()
 FPL_API = "https://fantasy.premierleague.com/api/"
 
 # 🎯 တစ်ပတ်ချင်းစီ ဖြည့်ဖို့အတွက် ဒီနေရာမှာပဲ ပြောင်းပေးပါ
-TARGET_GW = 23 
+TARGET_GW = 24 
 
 def get_gw_detailed_stats(entry_id, gw_num):
     url = f"{FPL_API}entry/{entry_id}/event/{gw_num}/picks/"
