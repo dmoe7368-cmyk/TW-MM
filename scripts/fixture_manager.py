@@ -16,7 +16,7 @@ def initialize_firebase():
 
 db = initialize_firebase()
 FPL_API = "https://fantasy.premierleague.com/api/"
-TARGET_GW = 26 
+TARGET_GW = 27 
 
 def get_gw_detailed_stats(entry_id, gw_num):
     if not entry_id: 
