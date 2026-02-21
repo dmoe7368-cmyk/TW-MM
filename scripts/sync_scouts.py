@@ -25,7 +25,7 @@ db = initialize_firebase()
 FPL_API = "https://fantasy.premierleague.com/api/"
 LEAGUES = {
     "League_A": "151552",
-    "League_B": "2892732"
+    "League_B": "184965"
 }
 
 def get_fpl_base_data():
